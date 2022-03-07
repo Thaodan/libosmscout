@@ -22,6 +22,7 @@
 
 #include <algorithm>
 #include <functional>
+#include <limits>
 #include <list>
 #include <unordered_map>
 #include <utility>
