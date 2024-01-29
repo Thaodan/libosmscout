@@ -31,8 +31,8 @@ if(PANGOFT2_FOUND)
 endif()
 target_compile_definitions(osmscout_map_svg PRIVATE -DOSMSCOUT_MAP_SVG_EXPORT_SYMBOLS)
 install(TARGETS osmscout_map_svg
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib)
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BIN}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIB}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIB})
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/osmscout DESTINATION include FILES_MATCHING PATTERN "*.h" PATTERN "private" EXCLUDE)
 install(FILES ${OSMSCOUT_BASE_DIR_BUILD}/include/osmscout/MapSVGFeatures.h DESTINATION include/osmscout)

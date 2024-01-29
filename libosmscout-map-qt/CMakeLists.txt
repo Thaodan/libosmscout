@@ -33,8 +33,8 @@ target_link_libraries(osmscout_map_qt
 		${Qt5Gui_LIBRARIES})
 target_compile_definitions(osmscout_map_qt PRIVATE -DOSMSCOUT_MAP_QT_EXPORT_SYMBOLS ${Qt5Gui_DEFINITIONS})
 install(TARGETS osmscout_map_qt
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib)
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BIN}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIB}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIB})
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/osmscout DESTINATION include FILES_MATCHING PATTERN "*.h" PATTERN "private/Config.h" EXCLUDE)
 install(FILES ${OSMSCOUT_BASE_DIR_BUILD}/include/osmscout/MapQtFeatures.h DESTINATION include/osmscout)

@@ -43,8 +43,8 @@ if(PANGOCAIRO_FOUND)
 endif()
 target_compile_definitions(osmscout_map_cairo PRIVATE -DOSMSCOUT_MAP_CAIRO_EXPORT_SYMBOLS ${PNG_DEFINITIONS})
 install(TARGETS osmscout_map_cairo
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib)
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BIN}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIB}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIB})
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/osmscout DESTINATION include FILES_MATCHING PATTERN "*.h" PATTERN "private/Config.h" EXCLUDE)
 install(FILES ${OSMSCOUT_BASE_DIR_BUILD}/include/osmscout/MapCairoFeatures.h DESTINATION include/osmscout)
