@@ -5,7 +5,7 @@ Summary: libosmscout qt libraries
 Version: 0.0.git.20170521
 Release: 1
 Group: Qt/Qt
-License: LGPL
+License: GPL-3.0-or-later
 Source0: %{name}-%{version}.tar.bz2
 
 #Requires: protobuf
@@ -15,11 +15,11 @@ Requires: libmarisa
 
 BuildRequires: cmake
 BuildRequires: pkgconfig(Qt5Core) pkgconfig(Qt5Gui) pkgconfig(Qt5Widgets) pkgconfig(Qt5Quick)
-#BuildRequires: protobuf-devel
+BuildRequires: protobuf-devel
 BuildRequires: libxml2-devel
 BuildRequires: libmarisa-devel
-#BuildRequires: cairo-devel
-#BuildRequires: pango-devel
+BuildRequires: cairo-devel
+BuildRequires: pango-devel
 
 %description
 libosmscout qt libraries
@@ -59,14 +59,16 @@ cd build-rpm
        -DOSMSCOUT_BUILD_TOOL_STYLEEDITOR=OFF \
        -DGPERFTOOLS_USAGE=OFF \
        -DOSMSCOUT_BUILD_TOOL_IMPORT=OFF \
-       -DOSMSCOUT_BUILD_TOOL_DUMPDATA=OFF ..\
-       
-%make_build
+       -DOSMSCOUT_BUILD_TOOL_DUMPDATA=OFF \
+       -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} ..
+# Remove line above when sailfish os cmake macros are updated/
+
+%cmake_build
 cd ..
 
 %install
 cd build-rpm
-make install DESTDIR=%{buildroot}
+%cmake_install
 cd ..
 
 %check
