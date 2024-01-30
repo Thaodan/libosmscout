@@ -38,8 +38,8 @@ target_link_libraries(osmscout_map_cairo
 		${CAIRO_LIBRARIES}
 		${PNG_LIBRARIES})
 if(PANGOCAIRO_FOUND)
-  target_include_directories(osmscout_map_cairo PRIVATE ${PANGO_INCLUDE_DIRS})
-  target_link_libraries(osmscout_map_cairo ${PANGO_LIBRARIES})
+  target_include_directories(osmscout_map_cairo PRIVATE ${PANGO_INCLUDE_DIRS} ${PANGOCAIRO_INCLUDE_DIRS} /usr/include/harfbuzz)
+  target_link_libraries(osmscout_map_cairo ${PANGO_LIBRARIES} ${PANGOCAIRO_LIBRARIES})
 endif()
 target_compile_definitions(osmscout_map_cairo PRIVATE -DOSMSCOUT_MAP_CAIRO_EXPORT_SYMBOLS ${PNG_DEFINITIONS})
 install(TARGETS osmscout_map_cairo
