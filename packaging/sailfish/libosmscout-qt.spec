@@ -20,6 +20,7 @@ BuildRequires: libxml2-devel
 BuildRequires: libmarisa-devel
 BuildRequires: cairo-devel
 BuildRequires: pango-devel
+BuildRequires: pkgconfig(harfbuzz)
 
 %description
 libosmscout qt libraries
@@ -46,7 +47,7 @@ cd build-rpm
        -DOSMSCOUT_BUILD_MAP_OPENGL=OFF \
        -DOSMSCOUT_BUILD_IMPORT=OFF \
        -DOSMSCOUT_BUILD_MAP_AGG=OFF \
-       -DOSMSCOUT_BUILD_MAP_CAIRO=OFF \
+       -DOSMSCOUT_BUILD_MAP_CAIRO=ON \
        -DOSMSCOUT_BUILD_MAP_SVG=OFF \
        -DOSMSCOUT_BUILD_MAP_IOSX=OFF \
        -DOSMSCOUT_BUILD_TESTS=OFF \
@@ -81,15 +82,15 @@ ctest -V %{?_smp_mflags}
 %{_libdir}/libosmscout_map.so
 %{_libdir}/libosmscout_map_qt.so
 %{_libdir}/libosmscout_client_qt.so
-#%{_libdir}/libosmscout_map_cairo.so
+%{_libdir}/libosmscout_map_cairo.so
 %{_datadir}/stylesheets
 
 %files devel
 %defattr(-, root, root, 0755)
 %{_includedir}/osmscout
-%{_libdir}/libosmscout.a
+#%{_libdir}/libosmscout.a
 #%{_libdir}/libosmscout_import.a
-%{_libdir}/libosmscout_map.a
-%{_libdir}/libosmscout_map_qt.a
-%{_libdir}/libosmscout_client_qt.a
+#%{_libdir}/libosmscout_map.a
+#%{_libdir}/libosmscout_map_qt.a
+#%{_libdir}/libosmscout_client_qt.a
 #%{_libdir}/libosmscout_map_cairo.a
